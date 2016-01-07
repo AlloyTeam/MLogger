@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<title>demo</title>
+
+</head>
+<body>
+<div>dddff</div>
+
+<script src="log_inline.js"></script>
+<script type="text/javascript">
+    var opt = {
+        'logExtJs': 'log_ext.js',
+        'logExtCss': 'log.css'
+    };
+    // 'main' : {
+    //     list : [_url('js/zepto.min.js'), _url('js/base.min.js'), _url('js/detail.min.js')],
+    //     check: ['$', 'DB', 'Detail']
+    // },
+    window.MLogger.init(opt);
+
+    console.log(1);
+    console.log({a:1,b: {x:'ccc'}});
+</script>
+
+</body>
+</html>
