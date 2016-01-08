@@ -12,6 +12,36 @@
 2.非inline的js 这个js可以放在cdn上面，在初始化的时候配置进去即可。<br>
 2.非inline的css 这个css可以放在cdn上面，在初始化的时候配置进去即可。<br>
 
+## 功能配置
+init的option<br>
+```javascript
+{
+    logExtJs : js文件存放的地址如果是本地就填绝对路径cdn就填写cdn的url
+    logExtCss : css文件存放的地址如果是本地就填绝对路径cdn就填写cdn的url
+    triggerLog : 换出log面板的方法，默认是按照图上方法呼出，用户也可以自定义方法，按照
+    triggerLog = function(callback) {
+        ....
+        callback();
+    }
+    即可
+    
+    beforeInit：log创建前调用的方法
+    myEvent: 自定义事件监听
+    widgetList: 使用系统组件哪些配置，默认是['dom', 'location', 'env', 'cgi', 'resource', 'codeEx', 'localStorage']
+    myWidget: 自定义组件，按照
+    myWidget = [{
+        'getHtml': function() {}
+    }];
+    返回组件的html字符串即可
+    
+    myButton: 自定义按钮，按照
+    myButton = [{
+        'getHtml': function() {}
+    }];
+    返回按钮的html字符串即可
+}
+```
+
 ## 功能截图
 <img src="http://7jpp2v.com1.z0.glb.clouddn.com/20150818153137955.gif" />
 ## 快速上手
