@@ -12,6 +12,9 @@
 2.非inline的js 这个js可以放在cdn上面，在初始化的时候配置进去即可。<br>
 2.非inline的css 这个css可以放在cdn上面，在初始化的时候配置进去即可。<br>
 
+## 呼出方法
+<img src="http://7jpp2v.com1.z0.glb.clouddn.com/huchu.png" />
+
 ## 功能配置
 init的option<br>
 ```javascript
