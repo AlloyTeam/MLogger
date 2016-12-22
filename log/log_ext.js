@@ -108,7 +108,7 @@
             return els;
         }
     };
-    
+
 
 
     var formatJSON = function(obj, intent) {
@@ -172,7 +172,7 @@
             html += '<span class=\'null\'>' + obj + '</span>';
         } else if (type === '[object String]') {
             html += '<span class=\'string\'>"' + obj.replace('\r\n','').split("<").join("&lt;").split(">").join("&gt;") + '"</span>'; //xss
-        } else if (type.match(/^\[object HTML([a-zA-Z]+)Element\]$/)) {
+        } else if (type.match(/^\[object HTML([a-zA-Z]*)Element\]$/)) {
             var attributes = obj.attributes;
             var str = '';
             var isChild;
@@ -190,7 +190,8 @@
 
             }
 
-            html += obj.childElementCount ? '' : obj.textContent;
+            html += obj.childElementCount ? '' : obj.textContent.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
             html += (isChild ? '\r\n' : '');
             html += isChild ? util.addIntent(intent, '</span><span class=\'tag-name\'>&lt;/' + obj.nodeName.toLowerCase() + '&gt;</span>') : '<span class=\'tag-name\'>&lt;/' + obj.nodeName.toLowerCase() + '&gt;</span>';
 
@@ -278,7 +279,7 @@
             var str = "<label>cgi</label>" +
                 "<div id='cgiInfo' class='info'><table id='cgiTable' class='cgi-table'>$$cgi</table><div class='hidden log-cgi-detail' id='cgiDetail'></div></div>";
 
-            
+
             var arr = window.Logger.data.cgiArr;
             var table = document.createElement('table');
             for (var i = 0; i < arr.length; i++) {
@@ -381,7 +382,7 @@
                 'os': window.navigator.userAgent.match(/(Android);?[\s\/]+([\d.]+)?/) ? 'android' : 'ios',
                 'network': window.navigator.onLine
             };
-            
+
             return str.replace('$$env', JSON.stringify(env));
         };
         var getMyWidget = function() {
@@ -504,10 +505,12 @@
                     var nextQ = util.nextAll(target,'quot');
                     for (var i = 0 ; i < nextQ.length ; i++) {
                         nextQ[i].classList.toggle('hidden');
+                        break;
                     }
                     var nextW = util.nextAll(target,'wrapper');
                     for (var i = 0 ; i < nextW.length ; i++) {
                         nextW[i].classList.toggle('hidden');
+                        break;
                     }
                     // $(target).nextAll('.quot').toggleClass('hidden'); //parentElement.querySelector('.quot').classList.toggle('hidden');
                     // //target.parentElement.querySelector('.wrapper').classList.toggle('hidden');
@@ -691,7 +694,7 @@
 
             bindEvent();
             first = false;
-            
+
         } else {
 
             if (window.Logger.data.IS_CONSOLE_OPEN) {
@@ -704,12 +707,12 @@
         lastOpenTime = +new Date();
         document.getElementById('log-preload').style.display = 'none';
         toolContainer.classList.remove('hidden');
-        
+
     };
 
-    
+
     var renderLog = function(obj, front) {
-        
+
         var contentStr,
             content;
 
@@ -737,7 +740,7 @@
 
     };
     var renderCgi = function(index) {
-        
+
         var arr = window.Logger.data.cgiArr;
         var table = document.getElementById('cgiTable');
         for (var i = index; i < arr.length; i++) {
