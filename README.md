@@ -47,6 +47,7 @@ init的option<br>
 
 ## 功能截图
 <img src="http://7jpp2v.com1.z0.glb.clouddn.com/20150818153137955.gif" />
+
 ## 快速上手
 ```
 <script src="log_inline.js"></script>
